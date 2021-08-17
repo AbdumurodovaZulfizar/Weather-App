@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/AbdumurodovaZulfizar/Weather-App/issues"
   },
-  "homepage": "https://github.com/AbdumurodovaZulfizar/Weather-App#readme"
+  "homepage": "https://github.com/AbdumurodovaZulfizar/Weather-App#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
