@@ -2,7 +2,7 @@
   "name": "Weather-App",
   "version": "1.0.0",
   "description": "Weather-App will show you current weather of any country, was built to improve API and JSON knowladges",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
