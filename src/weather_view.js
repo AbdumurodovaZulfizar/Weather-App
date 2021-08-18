@@ -49,4 +49,47 @@ const update_weather = (data, measure) => {
     'body',
   ).style.backgroundImage = `url('https://source.unsplash.com/1600x900/?${main}')`;
 
-}
+};
+
+const update_forecast_style = (forecast) => {
+  const forecast_5day = document.getElementById("day-5");
+  const today = new Date();
+  const tomorrow = new Date();
+  tomorrow.setDate(new Date().getDate() + 1);
+  const this_week = today.toLocaleString('en-Us', { weekday: 'long'});
+  const next_week = tomorrow.toLocaleString('en-Us', {weekday: 'long'});
+  forecast_5day.innerHTML = '';
+  for (let i  = 0 ;i < forecast.length; i++ ) {
+    const one_day = document.createElement("div");
+    const element  = forecast[i];
+    const options  = {
+      weekday: 'long',
+    }
+    const week_day = element.des_weekday.toLocaleString('en-Us', options);
+    const week_days = this_week === week_day ? 'Today': next_week === week_day ? 'Tomorrow': week_day;
+    one_day.innerHTML = `<p class='text-center mb-0'>${week_days}</p>
+    <img src="https://openweathermap.org/img/wn/${element.weather_icon}.png" class="text-center" alt="weather-icon">
+    <p class='text-center mb-0 city-deg'>${element.temperature}&deg</p>`;
+    forecast_5day.appendChild(one_day);
+  }
+};
+
+const update_forecast = (data) => {
+  const forecast = [];
+  const dataArray = data.data.list;
+
+  for (let i = 3; i < dataArray.length; i += 8) {
+    const oneDay = {
+      weather: dataArray[i].weather[0].main,
+      description: dataArray[i].weather[0].description,
+      weather_icon: dataArray[i].weather[0].icon,
+      temperature: Math.round(dataArray[i].main.temp),
+      des_weekday: new Date(dataArray[i].dt_txt),
+    };
+    forecast.push(oneDay);
+  }
+
+  return update_forecast_style(forecast);
+};
+
+export { update_weather, update_forecast }
