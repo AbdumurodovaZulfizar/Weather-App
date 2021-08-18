@@ -11,11 +11,11 @@ const fetch_weather = async (city) => {
   console.log( typeof response);
   const data = await response.json();
   if (data.cod == 200) {
-    // document.querySelector('.text-warning').classList.add("d-none");
+    document.querySelector('.text-warning').style.display = "none";
     return data;
   }
 
-  document.querySelector('.text-warning').classList.add('d-block');
+  document.querySelector('.text-warning').style.display = 'block';
   throw new Error('Can not find city, please try again.');
 };
 
