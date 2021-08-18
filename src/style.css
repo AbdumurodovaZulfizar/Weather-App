@@ -9,7 +9,13 @@
   padding: 0;
   margin: 0;
 }
+.celcius {
+  font-size: 100px;
+  line-height: 100px;
+}
 
-main {
-  background-color: aqua;
+.col-8 {
+  background-image: url(./back.svg);
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
