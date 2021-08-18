@@ -13,9 +13,32 @@
   font-size: 100px;
   line-height: 100px;
 }
+html {
+  height: 100%;
+}
+body {
+  background-image: url(./sunny.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
 
 .col-8 {
   background-image: url(./back.svg);
+  background-color: rgba(255, 255, 255, 0.3);
   background-repeat: no-repeat;
   background-position: bottom;
+}
+
+.city {
+  height: 40px;
+}
+
+.padding-top {
+  padding-top: 80px;
+}
+
+.city:focus-visible {
+  outline: 0;
 }
