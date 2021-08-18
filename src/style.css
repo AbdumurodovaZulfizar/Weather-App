@@ -27,7 +27,7 @@ body {
 
 .col-8 {
   background-image: url(./back.svg);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
   background-repeat: no-repeat;
   background-position: bottom;
 }

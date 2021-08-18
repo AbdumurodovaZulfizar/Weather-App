@@ -2,11 +2,11 @@ const city_name = document.getElementById("city-name");
 const city_weather = document.getElementById("city-weather");
 const time = document.getElementById("city-time");
 const today_icon = document.getElementById("today-icon");
-const celcius = document.getElementById("cecius");
+const celcius = document.getElementById("celcius");
 const fahrenheit = document.getElementById("fahrenheit");
 const wind = document.getElementById("wind");
-const humadity = document.getElementById("humadity");
-const pressure = document.getElementById("pressure");
+const humadity_place = document.getElementById("humadity");
+const pressure_place = document.getElementById("pressure");
 
 const current_time = (timezone) => {
   const date = new Date();
@@ -18,7 +18,6 @@ const current_time = (timezone) => {
     date: 'short',
     month: 'short',
     day: 'numeric',
-    year: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
   };
@@ -29,11 +28,11 @@ const current_time = (timezone) => {
   return foreignTime;
 };
 
-const update_weather = (data, measure) => {
+const update_weather = (data) => {
   const { name, timezone } = data;
   const { description, main, icon } = data.weather[0];
   const { speed } = data.wind;
-  const { humadity, pressure } = data.main;
+  const { humidity, pressure } = data.main;
   const { temp } = data.main;
   city_name.innerHTML = name;
   city_weather.innerHTML = description;
@@ -43,12 +42,11 @@ const update_weather = (data, measure) => {
   const tempF = (temp * 1.8 + 32).toFixed(2);
   fahrenheit.innerHTML = `${tempF}&degF`;
   wind.innerHTML = `${speed} M/S`;
-  humadity.innerHTML = `${humadity} %`;
-  pressure.innerHTML = `${pressure} hPa`
+  humadity_place.innerHTML = `${humidity} %`;
+  pressure_place.innerHTML = `${pressure} hPa`;
   document.querySelector(
     'body',
   ).style.backgroundImage = `url('https://source.unsplash.com/1600x900/?${main}')`;
-
 };
 
 const update_forecast_style = (forecast) => {
@@ -69,7 +67,7 @@ const update_forecast_style = (forecast) => {
     const week_days = this_week === week_day ? 'Today': next_week === week_day ? 'Tomorrow': week_day;
     one_day.innerHTML = `<p class='text-center mb-0'>${week_days}</p>
     <img src="https://openweathermap.org/img/wn/${element.weather_icon}.png" class="text-center" alt="weather-icon">
-    <p class='text-center mb-0 city-deg'>${element.temperature}&deg</p>`;
+    <p class='text-center city-deg'>${element.temperature}&deg</p>`;
     forecast_5day.appendChild(one_day);
   }
 };
