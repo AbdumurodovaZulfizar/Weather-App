@@ -18,7 +18,7 @@
   color: #51bedb;
 }
 body {
-  background-image: url(./sunny.jpg);
+  /* background-image: url(./sunny.jpg); */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
