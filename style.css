@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=STIX+Two+Text&display=swap');
+
+.font {
+  font-family: 'STIX Two Text', serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.celcius {
+  font-size: 100px;
+  line-height: 100px;
+}
+
+.icon {
+  color: #51bedb;
+}
+body {
+  /* background-image: url(./sunny.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+
+.col-8 {
+  background-image: url(./back.svg);
+  background-color: rgba(255, 255, 255, 0.2);
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.city {
+  height: 40px;
+}
+
+.padding-top {
+  padding-top: 80px;
+}
+
+.city:focus-visible {
+  outline: 0;
+}
