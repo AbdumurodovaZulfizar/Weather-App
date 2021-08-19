@@ -3,7 +3,6 @@ const cityweather = document.getElementById('city-weather');
 const time = document.getElementById('city-time');
 const todayicon = document.getElementById('today-icon');
 const celcius = document.getElementById('celcius');
-const fahrenheit = document.getElementById('fahrenheit');
 const wind = document.getElementById('wind');
 const humadityplace = document.getElementById('humadity');
 const pressureplace = document.getElementById('pressure');
