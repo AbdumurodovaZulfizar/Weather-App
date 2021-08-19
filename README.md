@@ -46,7 +46,7 @@ cd Weather-App
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are welcome!
+Contributions, [issues](https://github.com/AbdumurodovaZulfizar/Weather-App/issues), and feature requests are welcome!
 
 
 ## Show your support
@@ -63,4 +63,4 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 Copyright 2021 Zulfizar Abdumurodova
-- [MIT LICENSE](https://github.com/AbdumurodovaZulfizar/to-do-list-app/blob/build_todo/LICENSE) for this project.
+- [MIT LICENSE](https://github.com/AbdumurodovaZulfizar/Weather-App/blob/development/LICENSE) for this project.
