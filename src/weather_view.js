@@ -28,7 +28,20 @@ const currenttime = (timezone) => {
   return foreignTime;
 };
 
-const updateweather = (data) => {
+const changeTemp = (temp, tempC, tempF, units) => celcius.addEventListener('click', (e) => {
+  e.preventDefault();
+  if (units === 'imperial') {
+    temp = tempC;
+    celcius.innerHTML = `${temp}&degC`;
+    units = 'metric';
+  } else {
+    temp = tempF;
+    celcius.innerHTML = `${temp}&degF`;
+    units = 'imperial';
+  }
+});
+
+const updateweather = (data, units) => {
   const { name, timezone } = data;
   const { description, main, icon } = data.weather[0];
   const { speed } = data.wind;
@@ -40,13 +53,15 @@ const updateweather = (data) => {
   todayicon.innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}.png" class="icon-weather" alt="weather-icon">`;
   celcius.innerHTML = `${temp}&degC`;
   const tempF = (temp * 1.8 + 32).toFixed(2);
-  fahrenheit.innerHTML = `${tempF}&degF`;
+  // fahrenheit.innerHTML = `${tempF}&degF`;
   wind.innerHTML = `${speed} M/S`;
   humadityplace.innerHTML = `${humidity} %`;
   pressureplace.innerHTML = `${pressure} hPa`;
   document.querySelector(
     'body',
   ).style.backgroundImage = `url('https://source.unsplash.com/1600x900/?${main}')`;
+  const tempC = temp;
+  changeTemp(temp, tempC, tempF, units);
 };
 
 const updateforecaststyle = (forecast) => {

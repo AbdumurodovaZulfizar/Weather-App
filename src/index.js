@@ -5,13 +5,14 @@ import { fetchforecast, fetchweather } from './weather_api';
 
 const form = document.getElementById('form');
 const city = document.getElementById('city');
+const units = 'metric';
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const cityvalue = city.value;
   form.reset();
   fetchweather(cityvalue).then((data) => {
-    updateweather(data);
+    updateweather(data, units);
   }).catch((err) => {
     document.querySelector('.text-warning').textContent = err.message;
   });
@@ -23,7 +24,7 @@ form.addEventListener('submit', (e) => {
 window.onload = async () => {
   fetchweather('Termez')
     .then((data) => {
-      updateweather(data);
+      updateweather(data, units);
     })
     .catch((err) => {
       document.querySelector('.text-warning').textContent = err.message;
