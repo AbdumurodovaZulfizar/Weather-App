@@ -57,7 +57,7 @@ const updateforecaststyle = (forecast) => {
   const thisweek = today.toLocaleString('en-Us', { weekday: 'long' });
   const nextweek = tomorrow.toLocaleString('en-Us', { weekday: 'long' });
   forecast5day.innerHTML = '';
-  for (let i = 0; i < forecast.length; i+=1) {
+  for (let i = 0; i < forecast.length; i += 1) {
     const oneday = document.createElement('div');
     const element = forecast[i];
     const options = {
