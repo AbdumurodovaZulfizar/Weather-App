@@ -1,36 +1,35 @@
 import 'bootstrap';
 import 'jquery';
-import { update_forecast, update_weather } from './weather_view';
-import { fetch_forecast, fetch_weather } from './weather_api';
+import { updateforecast, updateweather } from './weather_view';
+import { fetchforecast, fetchweather } from './weather_api';
 
-const form  = document.getElementById("form");
-const city = document.getElementById("city");
-const measure = 'metric';
+const form = document.getElementById('form');
+const city = document.getElementById('city');
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
-  const city_value = city.value;
+  const cityvalue = city.value;
   form.reset();
-  fetch_weather(city_value).then((data) => {
-    update_weather(data)
+  fetchweather(cityvalue).then((data) => {
+    updateweather(data);
   }).catch((err) => {
-    document.querySelector(".text-warning").textContent = err.message;
+    document.querySelector('.text-warning').textContent = err.message;
   });
-  fetch_forecast(city_value).then((data) => {
-    update_forecast(data);
-  })
+  fetchforecast(cityvalue).then((data) => {
+    updateforecast(data);
+  });
 });
 
 window.onload = async () => {
-  fetch_weather('Termez')
+  fetchweather('Termez')
     .then((data) => {
-      update_weather(data);
+      updateweather(data);
     })
     .catch((err) => {
       document.querySelector('.text-warning').textContent = err.message;
     });
-  fetch_forecast('Termez')
+  fetchforecast('Termez')
     .then((data) => {
-      update_forecast(data);
-    })
+      updateforecast(data);
+    });
 };

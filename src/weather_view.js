@@ -1,16 +1,16 @@
-const city_name = document.getElementById("city-name");
-const city_weather = document.getElementById("city-weather");
-const time = document.getElementById("city-time");
-const today_icon = document.getElementById("today-icon");
-const celcius = document.getElementById("celcius");
-const fahrenheit = document.getElementById("fahrenheit");
-const wind = document.getElementById("wind");
-const humadity_place = document.getElementById("humadity");
-const pressure_place = document.getElementById("pressure");
+const cityname = document.getElementById('city-name');
+const cityweather = document.getElementById('city-weather');
+const time = document.getElementById('city-time');
+const todayicon = document.getElementById('today-icon');
+const celcius = document.getElementById('celcius');
+const fahrenheit = document.getElementById('fahrenheit');
+const wind = document.getElementById('wind');
+const humadityplace = document.getElementById('humadity');
+const pressureplace = document.getElementById('pressure');
 
-const current_time = (timezone) => {
+const currenttime = (timezone) => {
   const date = new Date();
-  const utc_time = date.getTime() + date.getTimezoneOffset() * 60000;
+  const utctime = date.getTime() + date.getTimezoneOffset() * 60000;
   const timeOffset = timezone / 3600;
 
   const format = {
@@ -23,56 +23,56 @@ const current_time = (timezone) => {
   };
 
   const foreignTime = new Date(
-    utc_time + 3600000 * timeOffset,
+    utctime + 3600000 * timeOffset,
   ).toLocaleDateString('en-US', format);
   return foreignTime;
 };
 
-const update_weather = (data) => {
+const updateweather = (data) => {
   const { name, timezone } = data;
   const { description, main, icon } = data.weather[0];
   const { speed } = data.wind;
   const { humidity, pressure } = data.main;
   const { temp } = data.main;
-  city_name.innerHTML = name;
-  city_weather.innerHTML = description;
-  time.innerHTML = current_time(timezone);
-  today_icon.innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}.png" class="icon-weather" alt="weather-icon">`;
+  cityname.innerHTML = name;
+  cityweather.innerHTML = description;
+  time.innerHTML = currenttime(timezone);
+  todayicon.innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}.png" class="icon-weather" alt="weather-icon">`;
   celcius.innerHTML = `${temp}&degC`;
   const tempF = (temp * 1.8 + 32).toFixed(2);
   fahrenheit.innerHTML = `${tempF}&degF`;
   wind.innerHTML = `${speed} M/S`;
-  humadity_place.innerHTML = `${humidity} %`;
-  pressure_place.innerHTML = `${pressure} hPa`;
+  humadityplace.innerHTML = `${humidity} %`;
+  pressureplace.innerHTML = `${pressure} hPa`;
   document.querySelector(
     'body',
   ).style.backgroundImage = `url('https://source.unsplash.com/1600x900/?${main}')`;
 };
 
-const update_forecast_style = (forecast) => {
-  const forecast_5day = document.getElementById("day-5");
+const updateforecaststyle = (forecast) => {
+  const forecast5day = document.getElementById('day-5');
   const today = new Date();
   const tomorrow = new Date();
   tomorrow.setDate(new Date().getDate() + 1);
-  const this_week = today.toLocaleString('en-Us', { weekday: 'long'});
-  const next_week = tomorrow.toLocaleString('en-Us', {weekday: 'long'});
-  forecast_5day.innerHTML = '';
-  for (let i  = 0 ;i < forecast.length; i++ ) {
-    const one_day = document.createElement("div");
-    const element  = forecast[i];
-    const options  = {
+  const thisweek = today.toLocaleString('en-Us', { weekday: 'long' });
+  const nextweek = tomorrow.toLocaleString('en-Us', { weekday: 'long' });
+  forecast5day.innerHTML = '';
+  for (let i = 0; i < forecast.length; i++) {
+    const oneday = document.createElement('div');
+    const element = forecast[i];
+    const options = {
       weekday: 'long',
-    }
-    const week_day = element.des_weekday.toLocaleString('en-Us', options);
-    const week_days = this_week === week_day ? 'Today': next_week === week_day ? 'Tomorrow': week_day;
-    one_day.innerHTML = `<p class='text-center mb-0'>${week_days}</p>
-    <img src="https://openweathermap.org/img/wn/${element.weather_icon}.png" class="text-center" alt="weather-icon">
+    };
+    const weekday = element.desweekday.toLocaleString('en-Us', options);
+    const weekdays = thisweek === weekday ? 'Today' : nextweek === weekday ? 'Tomorrow' : weekday;
+    oneday.innerHTML = `<p class='text-center mb-0'>${weekdays}</p>
+    <img src="https://openweathermap.org/img/wn/${element.weathericon}.png" class="text-center" alt="weather-icon">
     <p class='text-center city-deg'>${element.temperature}&deg</p>`;
-    forecast_5day.appendChild(one_day);
+    forecast5day.appendChild(oneday);
   }
 };
 
-const update_forecast = (data) => {
+const updateforecast = (data) => {
   const forecast = [];
   const dataArray = data.data.list;
 
@@ -80,14 +80,14 @@ const update_forecast = (data) => {
     const oneDay = {
       weather: dataArray[i].weather[0].main,
       description: dataArray[i].weather[0].description,
-      weather_icon: dataArray[i].weather[0].icon,
+      weathericon: dataArray[i].weather[0].icon,
       temperature: Math.round(dataArray[i].main.temp),
-      des_weekday: new Date(dataArray[i].dt_txt),
+      desweekday: new Date(dataArray[i].dt_txt),
     };
     forecast.push(oneDay);
   }
 
-  return update_forecast_style(forecast);
+  return updateforecaststyle(forecast);
 };
 
-export { update_weather, update_forecast }
+export { updateweather, updateforecast };

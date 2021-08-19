@@ -1,8 +1,11 @@
 const path = require('path');
+
 const dotenv = require('dotenv').config({
   path: path.join(__dirname, '.env'),
 });
+
 const webpack = require('webpack');
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -23,11 +26,9 @@ module.exports = {
     }),
   ],
   module: {
-      rules: [
-        {
-          test: /\.css$/i,
-          use: ['style-loader', 'css-loader'],
-        },
-      ],
-    },
+    rules: [{
+      test: /\.css$/i,
+      use: ['style-loader', 'css-loader'],
+    }, ],
+  },
 };
