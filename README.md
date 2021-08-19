@@ -28,12 +28,13 @@ cd Weather-App
 - Webpack
 
 ### Setup
-- run `npm install` to install all required node modules
-- if you want to see live version on your local machine run `npm run build` and open live server
+- Run `npm install` to install all required node modules
+- If you want to see live version on your local machine run `npm run build` for bundling
+- And run `npm start` to see the live version of the project
 
 ### Live Version
 
-[ToDo List](https://abdumurodovazulfizar.github.io/Weather-App/)
+[Weather App](https://abdumurodovazulfizar.github.io/Weather-App/)
 
 ## Authors
 
