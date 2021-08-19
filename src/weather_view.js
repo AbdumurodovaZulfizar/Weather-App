@@ -57,14 +57,14 @@ const updateforecaststyle = (forecast) => {
   const thisweek = today.toLocaleString('en-Us', { weekday: 'long' });
   const nextweek = tomorrow.toLocaleString('en-Us', { weekday: 'long' });
   forecast5day.innerHTML = '';
-  for (let i = 0; i < forecast.length; i++) {
+  for (let i = 0; i < forecast.length; i+=1) {
     const oneday = document.createElement('div');
     const element = forecast[i];
     const options = {
       weekday: 'long',
     };
     const weekday = element.desweekday.toLocaleString('en-Us', options);
-    const weekdays = thisweek === weekday ? 'Today' : nextweek === weekday ? 'Tomorrow' : weekday;
+    const weekdays = thisweek === weekday ? 'Today' : nextweek === weekday ? 'Tomorrow' : weekday; // eslint-disable-line
     oneday.innerHTML = `<p class='text-center mb-0'>${weekdays}</p>
     <img src="https://openweathermap.org/img/wn/${element.weathericon}.png" class="text-center" alt="weather-icon">
     <p class='text-center city-deg'>${element.temperature}&deg</p>`;
