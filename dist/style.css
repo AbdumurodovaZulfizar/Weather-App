@@ -10,8 +10,8 @@
   margin: 0;
 }
 .celcius {
-  font-size: 100px;
-  line-height: 100px;
+  font-size: 30px;
+  line-height: 30px;
 }
 
 .icon {
@@ -42,4 +42,11 @@ body {
 
 .city:focus-visible {
   outline: 0;
+}
+
+@media screen and (min-width=768px) {
+  .celcius {
+    font-size: 100px;
+    line-height: 100px;
+  }
 }
