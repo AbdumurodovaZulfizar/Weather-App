@@ -25,7 +25,7 @@
     integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <main class="main row m-0" id="main">
-  <div class="col-8 m-0 p-0 mx-auto shadow-lg my-5 rounded">
+  <div class="col-12 col-md-8 m-3 m-md-0 p-0 mx-auto shadow-lg my-5 rounded">
     <section class="search" id="search">
       <form id="form">
         <input type="search" name="city form-control" id="city" class="city border-0 w-100 px-3" placeholder="Type city name...">
@@ -33,7 +33,7 @@
       </form>
     </section>
     <section class="weather px-3" id="weather">
-      <div class="city-day d-flex justify-content-between py-5">
+      <div class="city-day d-flex-column d-md-flex justify-content-between py-5">
         <div class="city-weather-section">
           <h2 class="city-name fw-bold" id="city-name"></h2>
           <h5 class="city-weather" id="city-weather"></h5>
@@ -47,7 +47,7 @@
           <div class="today-icon fs-3 pt-2" id="today-icon"></i></div>
           <div class="celcius px-3" id="celcius"></div>
         </div>
-        <div>
+        <div class="d-none d-md-block">
           <h6 class="wind"><i class="fas fa-wind px-2 icon"></i>Wind: <span id="wind"></span></h6>
           <h6 class="wind"><i class="fas fa-tint px-2 icon"></i>Humadity: <span id="humadity"></span></h6>
           <h6 class="wind"><i class="fas fa-angle-double-down px-2 icon"></i>Pressure: <span id="pressure"></span></h6>
